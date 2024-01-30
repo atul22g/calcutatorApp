@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity, View,Text } from 'react-native'
 import style from '../style/style';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Buttons from './Buttons';
@@ -14,7 +14,7 @@ export default Main = () => {
             </View>
             {/* Screen */}
             <View style={style.screen}>
-
+                <Text style={style.screenText}>1+2</Text>
             </View>
             {/* Buttons */}
             <Buttons />

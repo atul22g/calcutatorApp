@@ -31,7 +31,16 @@ export default styles = StyleSheet.create({
     // Screen
     screen: {
         height: customVH(50),
+        justifyContent: "center",
+        alignItems: "flex-end",
         // backgroundColor: "green",
-        borderWidth: 2
+    },
+    screenText:{
+        margin: 15,
+        fontSize: 50,
+        fontWeight: "500",
+        color: "#fff"
     }
+
+
 })
