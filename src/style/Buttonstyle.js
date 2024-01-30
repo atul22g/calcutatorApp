@@ -57,7 +57,11 @@ export default Buttonstyle = StyleSheet.create({
     },
     ButtonContainerBottomRightLeftbtn: {
         height: 90,
-        paddingTop: 30
+        width: 65,
+        borderRadius: 20,
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
     },
     // ButtonContainerBottomRightRight
     ButtonContainerBottomRightRight: {

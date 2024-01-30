@@ -37,9 +37,17 @@ export default styles = StyleSheet.create({
     },
     screenText:{
         margin: 15,
-        fontSize: 50,
+        fontSize: 35,
         fontWeight: "500",
-        color: "#fff"
+        color: "#fff",
+        flexWrap: "nowrap",
+    },
+    result:{
+        margin: 15,
+        fontSize: 32,
+        fontWeight: "600",
+        color: "#858585",
+        flexWrap: "nowrap",
     }
 
 
