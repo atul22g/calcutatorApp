@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { customVH, customVW } from '../components/allFunc'
 export default styles = StyleSheet.create({
     // container
     container: {
@@ -9,8 +10,11 @@ export default styles = StyleSheet.create({
     // topBar
     topBar: {
         alignItems: "flex-end",
-        marginHorizontal: 20,
-        marginVertical: 8,
+        paddingHorizontal: 20,
+        paddingVertical: 8,
+        height: customVH(7),
+        width: customVW(100),
+        // backgroundColor: "red"
     },
     themeiconwrapper: {
         backgroundColor: "#1c2e46",
@@ -26,7 +30,8 @@ export default styles = StyleSheet.create({
     },
     // Screen
     screen: {
-        height: 410,
+        height: customVH(50),
+        // backgroundColor: "green",
         borderWidth: 2
     }
 })

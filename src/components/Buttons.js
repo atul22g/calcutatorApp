@@ -5,7 +5,7 @@ import { Button } from 'react-native-paper'
 
 const Buttons = () => {
     return (
-        <View>
+        <View style={Buttonstyle.ButtonConytainer}>
             <View style={Buttonstyle.ButtonContainerTop}>
                 <Button style={Buttonstyle.ButtonTop} mode="contained-tonal" onPress={() => console.log('(')}>
                     <Text style={Buttonstyle.buttonSize}>(</Text>

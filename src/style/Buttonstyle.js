@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { customVH } from '../components/allFunc'
 export default Buttonstyle = StyleSheet.create({
     // buttonSize
     buttonSize: {
@@ -6,11 +7,14 @@ export default Buttonstyle = StyleSheet.create({
         fontWeight: "bold",
         color: "white"
     },
+    ButtonConytainer:{
+        height: customVH(46)
+    },
     // ButtonTop
     ButtonContainerTop: {
         flexDirection: "row",
         justifyContent: "space-around",
-        paddingTop: 20
+        paddingTop: 30
     },
     ButtonTop: {
         flex: 0.43,
