@@ -8,5 +8,6 @@ const screenWidth = Dimensions.get('window').width;
 const customVW = (percentage) => (screenWidth * percentage) / 100;
 
 
+// 
 
 export {customVH, customVW}

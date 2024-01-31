@@ -25,25 +25,25 @@ export default Buttonstyle = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         // backgroundColor: "red",
-        paddingHorizontal: 18,
-        paddingVertical: 14
+        paddingHorizontal: 15,
+        paddingVertical: 12
     },
     ButtonContainerBottomLeft: {
         flex: 0.7,
         flexDirection: "row",
         flexWrap: "wrap",
         // backgroundColor: "green",
-        gap: 10
+        gap: 7
     },
     ButtonNubers: {
-        backgroundColor: "#152036"
+        backgroundColor: "#152036",
     },
     // ButtonContainerBottomRight
     ButtonContainerBottomRight: {
         flex: 0.45,
         flexDirection: "row",
         flexWrap: "wrap",
-        gap: 10
+        gap: 5
     },
     // ButtonContainerBottomRightTop
     ButtonContainerBottomRightTop: {
