@@ -1,16 +1,14 @@
 import React from 'react'
-import { StatusBar, View } from 'react-native'
 import Main from './src/components/Main'
-import style from './src/style/style'
-import { StateProvider } from './src/state/StateContext';
+import { StateProvider } from './src/createContext/calculator';
+import { ThemeProvider } from './src/createContext/Theme';
 
 export default App = () => {
     return (
-        <View style={style.container}>
+        <ThemeProvider>
             <StateProvider>
-                <StatusBar barStyle="light-content" backgroundColor="#304c71" />
-                <Main />
+                <Main/>
             </StateProvider>
-        </View>
+        </ThemeProvider>
     )
 }

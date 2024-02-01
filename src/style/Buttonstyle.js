@@ -3,7 +3,7 @@ import { customVH } from '../components/allFunc'
 export default Buttonstyle = StyleSheet.create({
     // buttonSize
     buttonSize: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: "bold",
         color: "white"
     },
@@ -18,7 +18,6 @@ export default Buttonstyle = StyleSheet.create({
     },
     ButtonTop: {
         flex: 0.43,
-        backgroundColor: "#1c2e46",
     },
     // ButtonBottom
     ButtonContainerBottom: {
@@ -34,9 +33,6 @@ export default Buttonstyle = StyleSheet.create({
         flexWrap: "wrap",
         // backgroundColor: "green",
         gap: 7
-    },
-    ButtonNubers: {
-        backgroundColor: "#152036",
     },
     // ButtonContainerBottomRight
     ButtonContainerBottomRight: {
@@ -67,11 +63,7 @@ export default Buttonstyle = StyleSheet.create({
     ButtonContainerBottomRightRight: {
         gap: 10
     },
-    ButtonOpperator: {
-        backgroundColor: "#27b5ff",
-    },
     ButtonEqual: {
-        backgroundColor: "#fea31d",
         paddingTop: 3,
         marginTop: 2,
         height: 38,

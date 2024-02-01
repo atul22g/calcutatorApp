@@ -1,26 +1,31 @@
 import React from 'react'
-import { TouchableOpacity, View,Text } from 'react-native'
-import style from '../style/style';
+import { StatusBar, TouchableOpacity, View, Text } from 'react-native'
+import styles from '../style/style';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Buttons from './Buttons';
-import { useCalculatorState } from '../state/StateContext';
+import { useCalculatorState } from '../createContext/calculator';
+import { useTheme } from '../createContext/Theme';
 
 export default Main = () => {
     const { calculatorState, result } = useCalculatorState();
+    const { toggleTheme, themeicon,isDarkMode, theme } = useTheme();
     return (
-        <View >
-            <View style={style.topBar}>
-                <TouchableOpacity style={style.themeiconwrapper}>
-                    <FontAwesome6 style={style.themeicon} size={30} name={'moon'} solid />
-                </TouchableOpacity>
+        <View style={[styles.container,{backgroundColor: theme.backgroundColor}]}>
+            <StatusBar barStyle={!isDarkMode? "dark-content": "light-content"} backgroundColor={theme.backgroundColor}/>
+            <View>
+                <View style={styles.topBar}>
+                    <TouchableOpacity onPress={toggleTheme} style={[styles.themeiconwrapper,{backgroundColor : theme.themeiconwrapper}]}>
+                        <FontAwesome6 style={styles.themeicon} size={25} name={themeicon} solid />
+                    </TouchableOpacity>
+                </View>
+                {/* Screen */}
+                <View style={styles.screen}>
+                    <Text style={[styles.screenText,{color:theme.screenText}]}>{calculatorState}</Text>
+                    <Text style={[styles.result,{color:theme.result}]}>{result}</Text>
+                </View>
+                {/* Buttons */}
+                <Buttons />
             </View>
-            {/* Screen */}
-            <View style={style.screen}>
-                <Text style={style.screenText}>{calculatorState}</Text>
-                <Text style={style.result}>{result}</Text>
-            </View>
-            {/* Buttons */}
-            <Buttons />
         </View>
     )
 }
