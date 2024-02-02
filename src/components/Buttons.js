@@ -20,7 +20,7 @@ const Buttons = () => {
         } else {
             lastLetter = calculatorState.charAt(calculatorState.length - 1);
             setCalculatorState(calculatorState + sum)
-            console.log("else isEqual");
+            // console.log("else isEqual");
         }
 
         // Clear screen
@@ -38,7 +38,7 @@ const Buttons = () => {
         // Change operator
         else if (['+', '-', '*', '/', '%', '.'].includes(lastLetter) && ['+', '-', '*', '/', '%', '.'].includes(sum)) {
             let _calculatorState = calculatorState.slice(0, -1);
-            console.log(_calculatorState);
+            // console.log(_calculatorState);
             setCalculatorState(_calculatorState + sum)
             // console.log("operator");
         }
@@ -82,7 +82,7 @@ const Buttons = () => {
                     <Button style={{ backgroundColor: theme.ButtonNubers }} mode="contained-tonal" onPress={() => operator('7')}>
                         <Text  style={[Buttonstyle.buttonSize,{color: theme.btnText}]}>7</Text>
                     </Button>
-                    <Button style={{ backgroundColor: theme.ButtonNubers }} mode="contained-tonal" onPress={() => operator(8)}>
+                    <Button style={{ backgroundColor: theme.ButtonNubers }} mode="contained-tonal" onPress={() => operator('8')}>
                         <Text  style={[Buttonstyle.buttonSize,{color: theme.btnText}]}>8</Text>
                     </Button>
                     <Button style={{ backgroundColor: theme.ButtonNubers }} mode="contained-tonal" onPress={() => operator('9')}>
