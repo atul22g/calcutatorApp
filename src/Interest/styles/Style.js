@@ -21,6 +21,18 @@ export default styles = StyleSheet.create({
     // Result
     resultTitle:{
         fontWeight: "600"
+    },
+    resulcontainer:{
+        flexDirection: "row",
+        gap: 4,
+    },
+    resultHeading:{
+        fontWeight: "700",
+        fontSize: 18
+    },
+    resultbody:{
+        fontWeight: "600",
+        fontSize: 18,
     }
 })
 

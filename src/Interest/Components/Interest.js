@@ -1,5 +1,5 @@
+import React, { useState } from 'react'
 import { View } from 'react-native'
-import React from 'react'
 import style from '../styles/Style';
 import { useTheme } from '../../themes/context/Theme';
 import { Dropdown } from 'react-native-element-dropdown';
@@ -16,55 +16,66 @@ const data = [
 
 export default function Interest() {
     const { theme } = useTheme();
+    const [interest, setInterest] = useState({
+        PA: '1',
+        IR: '1',
+        PT: 'Days',
+        TP: '1',
+    });
+
+    const handleInput = (name, value) => {
+        setInterest({
+            ...interest,
+            [name]: value,
+        });
+    };
+
     return (
         <PaperProvider
             theme={{
-                color: "red",
                 colors: {
                     primary: theme.btnText,
-                    surfaceVariant: theme.btnText,
                 },
             }}
         >
             <View style={[style.container, { backgroundColor: theme.backgroundColor }]}>
                 <TopBar />
                 {/* Principal Amount */}
-                <TextInput mode='outlined' keyboardType="numeric" style={[{ backgroundColor: theme.backgroundColor }, style.TextInput]} outlineColor={theme.btnText} textColor={theme.btnText} label="Principal Amount" />
+                <TextInput mode='outlined' value={interest.PA} onChangeText={(value) => handleInput('PA', value)} keyboardType="numeric" style={[{ backgroundColor: theme.backgroundColor }, style.TextInput]} outlineColor={theme.btnText} textColor={theme.btnText} label="Principal Amount" />
                 {/* Interest Rate */}
-                <TextInput mode='outlined' keyboardType="numeric" style={[{ backgroundColor: theme.backgroundColor }, style.TextInput]} outlineColor={theme.btnText} textColor={theme.btnText} label="Interest Rate (%)" />
+                <TextInput mode='outlined' value={interest.IR} onChangeText={(value) => handleInput('IR', value)}  keyboardType="numeric" style={[{ backgroundColor: theme.backgroundColor }, style.TextInput]} outlineColor={theme.btnText} textColor={theme.btnText} label="Interest Rate (%)" />
                 {/* Period Type Dropdown */}
                 <Dropdown
                     style={[style.dropdown, { borderColor: theme.btnText }]}
                     placeholderStyle={style.placeholderStyle}
-                    // placeholderStyle={[style.placeholderStyle, { color: theme.btnText }]}
-                    selectedTextStyle={style.selectedTextStyle}
-                    iconStyle={style.iconStyle}
+                    selectedTextStyle={[style.selectedTextStyle, { color: theme.btnText }]}
                     data={data}
                     maxHeight={300}
                     labelField="label"
                     valueField="value"
                     placeholder="Period Type"
-                // value={value}
-                // onFocus={() => setIsFocus(true)}
-                // onBlur={() => setIsFocus(false)}
-                // onChange={item => {
-                //     setValue(item.value);
-                //     setIsFocus(false);
-                // }}
-                // renderLeftIcon={() => (
-                //     <AntDesign
-                //         style={styles.icon}
-                //         color={isFocus ? 'blue' : 'black'}
-                //         name="Safety"
-                //         size={20}
-                //     />
-                // )}
+                value={interest.PT}
+                onChange={(value) => handleInput('PT', value)}
                 />
                 {/* Time Period */}
-                <TextInput mode='outlined' keyboardType="numeric" style={{ backgroundColor: theme.backgroundColor }} outlineColor={theme.btnText} label="Time Period" textColor={theme.btnText} />
+                <TextInput mode='outlined' value={interest.TP} onChangeText={(value) => handleInput('TP', value)}  keyboardType="numeric" style={{ backgroundColor: theme.backgroundColor }} outlineColor={theme.btnText} label="Time Period" textColor={theme.btnText} />
                 {/* Result */}
                 <Text style={[style.resultTitle, { color: theme.btnText }]} variant="titleLarge">Results:</Text>
-                
+                {/* Principal Amount */}
+                <View style={style.resulcontainer}>
+                    <Text style={[style.resultHeading, { color: theme.btnText }]} variant="titleMedium">Principal Amount ₹ </Text>
+                    <Text style={[style.resultbody, { color: theme.btnText }]} variant="bodyMedium">1</Text>
+                </View>
+                {/* Interest Rate */}
+                <View style={style.resulcontainer}>
+                    <Text style={[style.resultHeading, { color: theme.btnText }]} variant="titleMedium">Interest Earned ₹ </Text>
+                    <Text style={[style.resultbody, { color: theme.btnText }]} variant="bodyMedium">0.00</Text>
+                </View>
+                {/* Total Value */}
+                <View style={style.resulcontainer}>
+                    <Text style={[style.resultHeading, { color: theme.btnText }]} variant="titleMedium">Total Value ₹ </Text>
+                    <Text style={[style.resultbody, { color: theme.btnText }]} variant="bodyMedium">1.00</Text>
+                </View>
             </View>
         </PaperProvider>
     )
