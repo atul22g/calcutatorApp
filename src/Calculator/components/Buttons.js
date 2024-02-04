@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Text, View, TouchableHighlight } from 'react-native'
 import Buttonstyle from '../style/Buttonstyle'
 import { Button } from 'react-native-paper'
-import { useCalculatorState } from '../createContext/calculator';
-import { useTheme } from '../createContext/Theme';
+import { useCalculatorState } from '../context/calculator';
+import { useTheme } from '../../themes/context/Theme';
 
 const Buttons = () => {
     const { calculatorState, setCalculatorState, setResult, result } = useCalculatorState();

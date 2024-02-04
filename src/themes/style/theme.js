@@ -15,7 +15,7 @@ export const darkTheme = {
     themeiconwrapper: "#1c2e46",
     screenText: "#fff",
     result: "#858585",
-    ButtonTop: "#1c2e46",
+    ButtonTop: "#435e81",
     ButtonNubers: "#152036",
     ButtonOperator:"#27b5ff",
     btnText: "#fff",

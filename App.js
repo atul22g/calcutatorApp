@@ -1,13 +1,16 @@
 import React from 'react'
-import Main from './src/components/Main'
-import { StateProvider } from './src/createContext/calculator';
-import { ThemeProvider } from './src/createContext/Theme';
+import Main from './src/Main'
+import { NavigationContainer } from '@react-navigation/native';
+import { StateProvider } from './src/Calculator/context/calculator';
+import { ThemeProvider } from './src/themes/context/Theme';
 
 export default App = () => {
     return (
         <ThemeProvider>
             <StateProvider>
-                <Main/>
+                <NavigationContainer>
+                    <Main />
+                </NavigationContainer>
             </StateProvider>
         </ThemeProvider>
     )

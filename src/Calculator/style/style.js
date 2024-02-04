@@ -29,7 +29,7 @@ export default styles = StyleSheet.create({
 },
     // Screen
     screen: {
-    height: customVH(50),
+    height: customVH(47),
     justifyContent: "center",
     alignItems: "flex-end",
     // backgroundColor: "green",

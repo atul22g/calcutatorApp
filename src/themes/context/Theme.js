@@ -6,14 +6,14 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
     const [isDarkMode, setIsDarkMode] = useState(true);
-    const [themeicon, setThemeicon] = useState('moon');
+    const [themeicon, setThemeicon] = useState('sun');
 
     const toggleTheme = () => {
         setIsDarkMode(!isDarkMode);
         if (isDarkMode) {
-            setThemeicon('sun')
-        }else{
             setThemeicon('moon')
+        }else{
+            setThemeicon('sun')
         }
     };
 
