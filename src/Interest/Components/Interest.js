@@ -17,16 +17,51 @@ const data = [
 export default function Interest() {
     const { theme } = useTheme();
     const [interest, setInterest] = useState({
-        PA: '1',
-        IR: '1',
+        PA: '10000',
+        IR: '10',
         PT: 'Days',
         TP: '1',
+        IE: '2.73',
+        Total: '10,002.73',
     });
 
     const handleInput = (name, value) => {
+        const principalAmount = name === 'PA' ? value : interest.PA;
+        const interestRate = name === 'IR' ? (value / 100) : (interest.IR / 100);
+        const PeriodTime = name === 'PT' ? value : interest.PT;
+        const timePeriod = name === 'TP' ? value : interest.TP;
+
+        let interestEarned = 0;
+
+        switch (PeriodTime) {
+            case 'Days':
+                interestEarned = (principalAmount * interestRate * timePeriod) / 365;
+                break;
+            case 'Weeks':
+                interestEarned = (principalAmount * interestRate * timePeriod) / 52;
+                break;
+            case 'Months':
+                interestEarned = (principalAmount * interestRate * timePeriod) / 12;
+                break;
+            case 'Quarters':
+                interestEarned = (principalAmount * interestRate * timePeriod) / 4;
+                break;
+            case 'Years':
+                interestEarned = principalAmount * interestRate * timePeriod;
+                break;
+            default:
+                break;
+        }
+
+        let floatInterestEarned = parseFloat(interestEarned).toFixed(2);
+        const totalVal = parseFloat(principalAmount) + parseFloat(floatInterestEarned);
+        let total = isNaN(totalVal) ? 0 : totalVal
+
         setInterest({
             ...interest,
             [name]: value,
+            IE: floatInterestEarned,
+            Total: total,
         });
     };
 
@@ -41,9 +76,9 @@ export default function Interest() {
             <View style={[style.container, { backgroundColor: theme.backgroundColor }]}>
                 <TopBar />
                 {/* Principal Amount */}
-                <TextInput mode='outlined' value={interest.PA} onChangeText={(value) => handleInput('PA', value)} keyboardType="numeric" style={[{ backgroundColor: theme.backgroundColor }, style.TextInput]} outlineColor={theme.btnText} textColor={theme.btnText} label="Principal Amount" />
+                <TextInput mode='outlined' value={interest.PA} onChangeText={(value) => handleInput('PA', value)} keyboardType="numeric" style={[{ backgroundColor: theme.backgroundColor }, style.TextInput]} outlineColor={theme.btnText} textColor={theme.btnText} label="Principal Amount  ₹" />
                 {/* Interest Rate */}
-                <TextInput mode='outlined' value={interest.IR} onChangeText={(value) => handleInput('IR', value)}  keyboardType="numeric" style={[{ backgroundColor: theme.backgroundColor }, style.TextInput]} outlineColor={theme.btnText} textColor={theme.btnText} label="Interest Rate (%)" />
+                <TextInput mode='outlined' value={interest.IR} onChangeText={(value) => handleInput('IR', value)} keyboardType="numeric" style={[{ backgroundColor: theme.backgroundColor }, style.TextInput]} outlineColor={theme.btnText} textColor={theme.btnText} label="Interest Rate (%)" />
                 {/* Period Type Dropdown */}
                 <Dropdown
                     style={[style.dropdown, { borderColor: theme.btnText }]}
@@ -54,27 +89,27 @@ export default function Interest() {
                     labelField="label"
                     valueField="value"
                     placeholder="Period Type"
-                value={interest.PT}
-                onChange={(value) => handleInput('PT', value)}
+                    value={interest.PT}
+                    onChange={(value) => handleInput('PT', value.value)}
                 />
                 {/* Time Period */}
-                <TextInput mode='outlined' value={interest.TP} onChangeText={(value) => handleInput('TP', value)}  keyboardType="numeric" style={{ backgroundColor: theme.backgroundColor }} outlineColor={theme.btnText} label="Time Period" textColor={theme.btnText} />
+                <TextInput mode='outlined' value={interest.TP} onChangeText={(value) => handleInput('TP', value)} keyboardType="numeric" style={{ backgroundColor: theme.backgroundColor }} outlineColor={theme.btnText} label="Time Period" textColor={theme.btnText} />
                 {/* Result */}
                 <Text style={[style.resultTitle, { color: theme.btnText }]} variant="titleLarge">Results:</Text>
                 {/* Principal Amount */}
                 <View style={style.resulcontainer}>
                     <Text style={[style.resultHeading, { color: theme.btnText }]} variant="titleMedium">Principal Amount ₹ </Text>
-                    <Text style={[style.resultbody, { color: theme.btnText }]} variant="bodyMedium">1</Text>
+                    <Text style={[style.resultbody, { color: theme.btnText }]} variant="bodyMedium">{interest.PA}</Text>
                 </View>
                 {/* Interest Rate */}
                 <View style={style.resulcontainer}>
                     <Text style={[style.resultHeading, { color: theme.btnText }]} variant="titleMedium">Interest Earned ₹ </Text>
-                    <Text style={[style.resultbody, { color: theme.btnText }]} variant="bodyMedium">0.00</Text>
+                    <Text style={[style.resultbody, { color: theme.btnText }]} variant="bodyMedium">{interest.IE}</Text>
                 </View>
                 {/* Total Value */}
                 <View style={style.resulcontainer}>
                     <Text style={[style.resultHeading, { color: theme.btnText }]} variant="titleMedium">Total Value ₹ </Text>
-                    <Text style={[style.resultbody, { color: theme.btnText }]} variant="bodyMedium">1.00</Text>
+                    <Text style={[style.resultbody, { color: theme.btnText }]} variant="bodyMedium">{interest.Total}</Text>
                 </View>
             </View>
         </PaperProvider>
